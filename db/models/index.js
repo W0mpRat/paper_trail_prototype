@@ -3,9 +3,10 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const PaperTrail = require('sequelize-paper-trail');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = require('../../config/config.json')[env];
 const db = {};
 
 let sequelize;
@@ -15,18 +16,20 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-// // Paper Trail options
-// const opts = {
-//   underscored: true,
-//   underscoredAttributes: true,
-//   enableCompression: false,
-//   enableMigration: true
-// }
+// Paper Trail options
+const opts = {
+  enableCompression: false,
+  enableMigration: false,
+  // userModel: 'User',
+  // belongsToUserOptions: {
+  //   foreignKey: 'userId'
+  // }
+}
 
-// // Load Paper Trail
-// var PaperTrail = require("sequelize-paper-trail")(sequelize, opts);
-// // Setup Revision and RevisionChange models
-// PaperTrail.defineModels(db);
+// Load Paper Trail
+const pt = PaperTrail.init(sequelize, opts)
+// Setup Revision and RevisionChange models
+// pt.defineModels()
 
 fs
   .readdirSync(__dirname)
@@ -44,7 +47,13 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+// sequelize.sync()
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+pt.defineModels()
+
+db['User'].Revisions = db['User'].hasPaperTrail()
 
 module.exports = db;

@@ -27,6 +27,11 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      revision: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       }
     });
   },
