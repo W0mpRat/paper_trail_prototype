@@ -2,9 +2,9 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "database_development",
+    "database": "my_app_development",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "mariadb",
     "operatorsAliases": false
   },
   "test": {
@@ -12,7 +12,7 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "mariadb",
     "operatorsAliases": false
   },
   "production": {
@@ -20,7 +20,7 @@
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "mariadb",
     "operatorsAliases": false
   }
 }
