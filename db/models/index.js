@@ -15,6 +15,19 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// // Paper Trail options
+// const opts = {
+//   underscored: true,
+//   underscoredAttributes: true,
+//   enableCompression: false,
+//   enableMigration: true
+// }
+
+// // Load Paper Trail
+// var PaperTrail = require("sequelize-paper-trail")(sequelize, opts);
+// // Setup Revision and RevisionChange models
+// PaperTrail.defineModels(db);
+
 fs
   .readdirSync(__dirname)
   .filter(file => {
