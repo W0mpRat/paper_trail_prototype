@@ -21,6 +21,7 @@ const opts = {
   enableCompression: true,
   enableMigration: false,
   mysql: true,
+  enableRevisionChangeModel: true,
   userModel: 'User',
   belongsToUserOptions: {
     foreignKey: 'userId'
@@ -48,7 +49,7 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-sequelize.sync()
+// sequelize.sync()
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
