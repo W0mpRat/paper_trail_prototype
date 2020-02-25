@@ -20,10 +20,11 @@ if (config.use_env_variable) {
 const opts = {
   enableCompression: false,
   enableMigration: false,
-  // userModel: 'User',
-  // belongsToUserOptions: {
-  //   foreignKey: 'userId'
-  // }
+  mysql: true,
+  userModel: 'User',
+  belongsToUserOptions: {
+    foreignKey: 'userId'
+  }
 }
 
 // Load Paper Trail
@@ -47,7 +48,7 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-// sequelize.sync()
+sequelize.sync()
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
