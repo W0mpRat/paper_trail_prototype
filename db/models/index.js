@@ -18,7 +18,7 @@ if (config.use_env_variable) {
 
 // Paper Trail options
 const opts = {
-  enableCompression: false,
+  enableCompression: true,
   enableMigration: false,
   mysql: true,
   userModel: 'User',
