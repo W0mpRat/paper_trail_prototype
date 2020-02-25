@@ -72,7 +72,4 @@ app.get('/users/:id', (req, response) => {
   })
 })
 
-
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-

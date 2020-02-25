@@ -56,6 +56,9 @@ db.Sequelize = Sequelize;
 
 pt.defineModels()
 
+// sequelize.models.Revision.options.name = { plural: "revisions", singular: "revision" }
+// sequelize.models.RevisionChange.options.name = { plural: "revisionChanges", singular: "revisionChange" }
+
 db['User'].Revisions = db['User'].hasPaperTrail()
 
 module.exports = db;
