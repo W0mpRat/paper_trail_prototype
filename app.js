@@ -1,11 +1,11 @@
 const express = require('express')
 const { User } = require('./db/models')
 const app = express()
-const port = 3000
+const port = 3001
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.get('/update_user_age/:id', (req, response) => {
+app.put('/update_user_age/:id', (req, response) => {
   User.findByPk(req.params.id).then((res) => {   
     // // Save Example
     // res.age = res.age + 1
@@ -14,7 +14,7 @@ app.get('/update_user_age/:id', (req, response) => {
     // })
     // // End Save Example
   
-    // // Update Example
+    // Update Example
     res.update({
       age: res.age + 1
     }, {
@@ -23,16 +23,17 @@ app.get('/update_user_age/:id', (req, response) => {
       response.status(200).send(res2)
     })
 
-    // // End Update Example
+    // End Update Example
   })
 })
 
-app.get('/update_user_name/:id', (req, response) => {
+app.put('/update_user_name/:id', (req, response) => {
   User.findByPk(req.params.id).then((res) => {
     res.update({
       firstName: res.firstName + 'z',
     }, {
-      userId: 2
+      userId: 2,
+      fields: ['firstName', 'revision']
     }).then((res2) => {
       response.status(200).send(res2)
     })

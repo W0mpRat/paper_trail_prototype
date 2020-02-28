@@ -22,6 +22,7 @@ const opts = {
   enableMigration: false,
   mysql: true,
   enableRevisionChangeModel: true,
+  debug: false,
   userModel: 'User',
   belongsToUserOptions: {
     foreignKey: 'userId'
